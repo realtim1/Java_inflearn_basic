@@ -5,7 +5,7 @@ import org.example.member.Member;
 
 public class RateDiscountPolicy implements DiscountPolicy{
 
-    private int discountPercent = 10;
+    int discountPercent = 10;
 
 
     @Override
