@@ -1,15 +1,18 @@
 package org.example.order;
 
 import org.example.discount.DiscountPolicy;
-import org.example.discount.FixDiscountPolicy;
 import org.example.member.Member;
 import org.example.member.MemberRepository;
-import org.example.member.MemoryMemberRepository;
 
 public class OrderServiceImpl implements OrderService{
 
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
-    private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
+    private final MemberRepository memberRepository; // 변경 , final로 되어있으면 기본으로 할당되는 생성자를 통해 할당되어야한다.
+    private final DiscountPolicy discountPolicy; // 변경
+
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {

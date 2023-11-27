@@ -1,17 +1,22 @@
 package org.example.member;
 
-import com.sun.xml.internal.ws.policy.AssertionSet;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.AssertionsKt;
+import org.example.AppConfig;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import org.springframework.util.Assert;
 
 public class MemberServiceTest {
 
 
+    MemberService memberService;
 
-    MemberService memberService = new MemberServiceImpl();
+    @BeforeEach
+    public  void beforeEach(){
+        AppConfig appConfig = new AppConfig();
+        memberService = appConfig.memberService();
+        System.out.println("beforeEach = " + "실행");
+    }
+
+    //MemberService memberService = new MemberServiceImpl();
 
     @Test
     void join(){

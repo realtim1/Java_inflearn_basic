@@ -1,16 +1,23 @@
 package org.example.member;
 
+import org.example.AppConfig;
 import org.example.order.Order;
 import org.example.order.OrderService;
-import org.example.order.OrderServiceImpl;
-import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class OrderServiceTest {
 
-    MemberService memberService = new MemberServiceImpl();
-    OrderService orderService = new OrderServiceImpl();
+    MemberService memberService;
+    OrderService orderService;
 
+    @BeforeEach
+    public  void beforeEach(){
+        AppConfig appConfig = new AppConfig();
+        memberService = appConfig.memberService();
+        orderService = appConfig.orderService();
+        System.out.println("beforeEach = " + "실행");
+    }
 
     @Test
     void createOrder(){
