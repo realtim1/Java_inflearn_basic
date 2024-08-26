@@ -16,15 +16,18 @@ public class AppConfig {
 //애플리케이션의 환경설정, 구성은 AppConfig 에서 해줘야한다.
     @Bean
     public MemberService memberService(){
+        System.out.println(" call Appconfig memberService = " );
         return new MemberServiceImpl(memberRepository()); // 생성자 주입
     }
 
     @Bean
     public static MemberRepository memberRepository() {
+        System.out.println(" call Appconfig memberRepository = " );
         return new MemoryMemberRepository();
     }
     @Bean
     public OrderService orderService(){
+        System.out.println(" call Appconfig orderService = " );
         return new  OrderServiceImpl(memberRepository(), discountPolicy());
     }
     @Bean
