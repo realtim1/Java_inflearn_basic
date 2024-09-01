@@ -4,9 +4,11 @@ import org.example.member.Grade;
 import org.example.member.Member;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.stereotype.Component;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+@Component
 class RateDiscountPolicyTest {
 
     RateDiscountPolicy test = new RateDiscountPolicy();
