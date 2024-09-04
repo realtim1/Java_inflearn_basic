@@ -9,11 +9,22 @@ import org.springframework.stereotype.Component;
 @Component
 public class OrderServiceImpl implements OrderService{
 
-    private final MemberRepository memberRepository; // 변경 , final로 되어있으면 기본으로 할당되는 생성자를 통해 할당되어야한다.
-    private final DiscountPolicy discountPolicy; // 변경
+    //@Autowired
+    private  MemberRepository memberRepository; // 변경 , final로 되어있으면 기본으로 할당되는 생성자를 통해 할당되어야한다.
+    //@Autowired
+    private  DiscountPolicy discountPolicy; // 변경
+
+    @Autowired
+    public void init(MemberRepository memberRepository, DiscountPolicy
+            discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
 
     @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        System.out.println("memberRepository = " + memberRepository);
+        System.out.println("discountPolicy = " + discountPolicy);
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
